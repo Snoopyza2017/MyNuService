@@ -1,3 +1,7 @@
 <resources>
+
     <string name="app_name">My Nu Service</string>
+
+    <string name="title_thai">แลกเปลี่ยนเงินตรา</string>
+
 </resources>
