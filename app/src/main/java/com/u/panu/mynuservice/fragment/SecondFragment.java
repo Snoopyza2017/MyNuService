@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.u.panu.mynuservice.R;
 import com.u.panu.mynuservice.utility.GetJSON;
@@ -16,6 +19,7 @@ import com.u.panu.mynuservice.utility.MyConstant;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.Date;
 
@@ -44,6 +48,38 @@ public class SecondFragment extends Fragment{
 
 // Show Rate
         showRate();
+
+// Calculate Controller
+        Button button = getView().findViewById(R.id.btnexchange);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                EditText editText = getView().findViewById(R.id.edtUSD);
+                usdString = editText.getText().toString().trim();
+
+                if (usdString.isEmpty()) {
+                    // Have Space
+                    Toast.makeText(getActivity(),"Please Fill Thai Bath",
+                    Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // No Space
+                    double usdAdouble = Double.parseDouble(usdString);
+                    double answerAdouble = usdAdouble * rateADouble;
+
+                    TextView textView = getView().findViewById(R.id.txtAnswer);
+                    textView.setText(Double.toString(answerAdouble) + "THB");
+                    }
+
+
+
+                }
+
+
+
+        });
+
 
 
     }   //Main Method
